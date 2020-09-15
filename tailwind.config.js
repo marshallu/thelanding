@@ -13,18 +13,17 @@ module.exports = {
       transparent: "transparent",
       inherit: "inherit",
       black: "#131716",
-      green: "#00AC3E",
       white: "#ffffff",
-      yellow: "#F3D03E",
-      beige: "#D5CB9F",
-      purple: "#830065",
-      teal: "#4298B5",
-      orange: "#E87722",
 
-      "green-darker": "#007129",
-      "green-dark": "#029F3B",
-      "green-bright": "#08cd4f",
+      "dark-brown": "#a35d43",
+      "darker-brown": "#55382f",
+      "light-brown": "#bb905c",
+      "orange": "#d97f28",
+      "green": "#00AC3E",
+      "dark-green": "#1c8878",
+      "light-green": "#8ec63f",
 
+      "gray": "#999999",
     },
     container: {
       center: true
@@ -33,7 +32,23 @@ module.exports = {
       sans: ["Open Sans", "Helvetica Neue", "Helvetica", "Arial", "sans-serif"],
       serif: ["Sentinel A", "Sentinel B", "Bookman Old Style Regular", "serif"]
     },
-    extend: {},
+    extend: {
+      minHeight: {
+        '24': '6rem',
+        '48': '12rem',
+        '64': '16rem',
+        '80': '20rem',
+        '96': '24rem',
+        '112': '28rem',
+        '128': '32rem',
+        '144': '36rem',
+        '160': '40rem',
+        '176': '44rem',
+        '184': '46rem',
+        '200': '50rem',
+        '224': '56rem'
+      },
+    },
   },
   variants: {},
   plugins: [
@@ -78,37 +93,12 @@ module.exports = {
 
       addUtilities(overlayUtilities, ['responsive', 'hover', 'group-hover'])
 
-      const arrowGenerators = [
-        (color, name) => ({
-          [`.${name}-arrow-t`] : { margin: 'auto', height: 0, width: 0, borderLeft: `${theme('spacing.8')} solid transparent`, borderRight: `${theme('spacing.8')} solid transparent`, borderTop: `${theme('spacing.8')} solid ${color}` },
-          [`.${name}-arrow-t-lg`] : { margin: 'auto', height: 0, width: 0, borderLeft: `${theme('spacing.12')} solid transparent`, borderRight: `${theme('spacing.12')} solid transparent`, borderTop: `${theme('spacing.12')} solid ${color}` },
-          [`.${name}-arrow-t-sm`] : { margin: 'auto', height: 0, width: 0, borderLeft: `${theme('spacing.3')} solid transparent`, borderRight: `${theme('spacing.3')} solid transparent`, borderTop: `${theme('spacing.3')} solid ${color}` },
-          [`.${name}-arrow-b`] : { margin: 'auto', height: 0, width: 0, borderLeft: `${theme('spacing.8')} solid ${color}`, borderRight: `${theme('spacing.8')} solid ${color}`, borderTop: `${theme('spacing.8')} solid transparent` },
-          [`.${name}-arrow-b-lg`] : { margin: 'auto', height: 0, width: 0, borderLeft: `${theme('spacing.12')} solid ${color}`, borderRight: `${theme('spacing.12')} solid ${color}`, borderTop: `${theme('spacing.12')} solid transparent` },
-          [`.${name}-arrow-b-sm`] : { margin: 'auto', height: 0, width: 0, borderLeft: `${theme('spacing.3')} solid ${color}`, borderRight: `${theme('spacing.3')} solid ${color}`, borderTop: `${theme('spacing.3')} solid transparent` },
-        }),
-      ]
-
-      const arrowUtilities = _.flatMap(arrowGenerators, generator => {
-        return _.flatMap(defaultColors, generator)
-      })
-
-      addUtilities(arrowUtilities, ['responsive', 'hover', 'group-hover'])
-
       const buttons = {
         '.btn': {
-          padding: `${theme('spacing.2')} ${theme('spacing.4')}`,
+          padding: `${theme('spacing.3')} ${theme('spacing.5')}`,
           borderRadius: theme('borderRadius.default'),
           borderWidth: theme('borderWidth.default'),
-        },
-        '.btn-white': {
-          backgroundColor: theme('colors.white'),
-          color: theme('colors.orange'),
-          borderColor: theme('colors.black'),
-          '&:hover': {
-            backgroundColor: theme('colors.orange'),
-            color: theme('colors.white')
-          },
+          fontSize: theme('fontSize.lg')
         },
         '.btn-orange': {
           backgroundColor: theme('colors.orange'),
@@ -118,20 +108,27 @@ module.exports = {
             backgroundColor: theme('colors.white'),
             color: theme('colors.orange')
           },
-        },
-        '.btn-green': {
-          backgroundColor: theme('colors.green'),
-          color: theme('colors.black'),
-          borderColor: theme('colors.green'),
-          '&:hover': {
-            backgroundColor: theme('colors.black'),
-            color: theme('colors.green'),
-            borderColor: theme('colors.black'),
-          },
-        },
+        }
       }
 
       addComponents(buttons)
+
+      const textShadows = {
+        '.text-shadow' : {
+          textShadow: '5px 5px 5px rgba(0, 0, 0, 0.3), 10px 10px 10px rgba(0, 0, 0, 0.4)'
+        },
+        '.text-shadow-lg' : {
+          textShadow: '-3px 3px 18.2px rgba(0, 0, 0, 0.25)'
+        },
+        '.text-shadow-sm' : {
+          textShadow: '-1px 1px 18.2px rgba(0, 0, 0, 0.25)'
+        },
+      }
+
+      addComponents(textShadows, {
+        variants: ['responsive', 'hover'],
+      })
+
     })
 
   ]
