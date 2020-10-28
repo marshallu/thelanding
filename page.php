@@ -9,7 +9,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package The_Landing
+ * @package TheLanding
  */
 
 get_header();

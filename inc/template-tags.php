@@ -4,7 +4,7 @@
  *
  * Eventually, some of the functionality here could be replaced by core features.
  *
- * @package The_Landing
+ * @package TheLanding
  */
 
 if ( ! function_exists( 'thelanding_posted_on' ) ) :

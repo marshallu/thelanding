@@ -4,7 +4,7 @@
  *
  * @link https://jetpack.com/
  *
- * @package The_Landing
+ * @package TheLanding
  */
 
 /**

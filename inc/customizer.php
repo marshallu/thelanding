@@ -2,7 +2,7 @@
 /**
  * The Landing Theme Customizer
  *
- * @package The_Landing
+ * @package TheLanding
  */
 
 /**

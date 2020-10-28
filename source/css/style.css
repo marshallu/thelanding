@@ -2,118 +2,41 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+@import "arrows";
+
+html {
+	scroll-behavior: smooth;
+}
+
 x-cloak {
     @apply hidden;
 }
 
-.menu-primary-navigation-container ul {
-    @apply flex;
-}
-
-.menu-primary-navigation-container ul li {
-    @apply uppercase font-semibold text-white font-serif ;
-}
-
-.menu-primary-navigation-container ul li a {
-    @apply inline-block px-4 py-4;
-}
-.menu-primary-navigation-container ul li a:hover {
-    @apply bg-darker-brown;
-}
-
-/* purgecss start ignore */
-.columns {
-    @apply px-2;
-}
-
-.small-1 { @apply w-1/12; }
-.small-2 { @apply w-2/12; }
-.small-3 { @apply w-3/12; }
-.small-4 { @apply w-4/12; }
-.small-5 { @apply w-5/12; }
-.small-6 { @apply w-6/12; }
-.small-7 { @apply w-7/12; }
-.small-8 { @apply w-8/12; }
-.small-9 { @apply w-9/12; }
-.small-10 { @apply w-10/12; }
-.small-11 { @apply w-11/12; }
-.small-12 { @apply w-full; }
-
-@screen lg {
-    .columns {
-        @apply px-6;
-    }
-    .medium-1 { @apply w-1/12; }
-    .medium-2 { @apply w-2/12; }
-    .medium-3 { @apply w-3/12; }
-    .medium-4 { @apply w-4/12; }
-    .medium-5 { @apply w-5/12; }
-    .medium-6 { @apply w-6/12; }
-    .medium-7 { @apply w-7/12; }
-    .medium-8 { @apply w-8/12; }
-    .medium-9 { @apply w-9/12; }
-    .medium-10 { @apply w-10/12; }
-    .medium-11 { @apply w-11/12; }
-    .medium-12 { @apply w-full; }
+.footer-flag {
+    background-image: none;
 }
 
 @screen lg {
-    .large-1 { @apply w-1/12; }
-    .large-2 { @apply w-2/12; }
-    .large-3 { @apply w-3/12; }
-    .large-4 { @apply w-4/12; }
-    .large-5 { @apply w-5/12; }
-    .large-6 { @apply w-6/12; }
-    .large-7 { @apply w-7/12; }
-    .large-8 { @apply w-8/12; }
-    .large-9 { @apply w-9/12; }
-    .large-10 { @apply w-10/12; }
-    .large-11 { @apply w-11/12; }
-    .large-12 { @apply w-full; }
-}
-
-/* Button Dropdown and Normal Dropdown */
-.f-dropdown {
-    @apply hidden;
-}
-
-.flex-video {
-    @apply relative h-0 overflow-hidden pt-6 mb-4;
-    padding-bottom: 67.5%;
-}
-
-.flex-video iframe, .flex-video object, .flex-video embed, .flex-video video {
-    @apply absolute w-full h-full top-0 left-0;
-}
-
-.flex-video.widescreen {
-    padding-bottom: 56.34%
-}
-
-.entry-content a {
-    @apply underline text-dark-brown;
-    &:hover {
-        @apply no-underline;
+    .footer-flag {
+        margin-top: -35px;
+        background-image: url('//www.marshall.edu/assets/images/m_flag.svg');
     }
 }
+.snap {
+    -ms-scroll-snap-type: x mandatory;
+    scroll-snap-type: x mandatory;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth
+  }
+  .snap::-webkit-scrollbar {
+    display: none;
+  }
 
-.entry-content p {
-    @apply leading-relaxed mb-4;
-}
+  .snap > div {
+    scroll-snap-align: center;
+  }
 
-.entry-content h2 + p {
-    @apply mt-0;
+#community ul,
+#amenities ul {
+    @apply list-outside list-disc pl-6;
 }
-
-.entry-content h2 {
-    @apply font-serif font-semibold text-orange text-2xl mb-2;
-}
-
-.entry-content p + h2 {
-    @apply mt-8;
-}
-
-.entry-content h3 {
-    @apply font-sans text-darker-brown font-semibold;
-}
-/* purgecss end ignore */

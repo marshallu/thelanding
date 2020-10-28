@@ -15,15 +15,19 @@ module.exports = {
       black: "#131716",
       white: "#ffffff",
 
-      "dark-brown": "#a35d43",
-      "darker-brown": "#55382f",
-      "light-brown": "#bb905c",
-      "orange": "#d97f28",
-      "green": "#00AC3E",
-      "dark-green": "#1c8878",
-      "light-green": "#8ec63f",
-
-      "gray": "#999999",
+      green: "#00AC3E",
+      "green-bright": "#08cd4f",
+      "green-brighter": "#3cf73c",
+      orange: "#e87722",
+      "orange-dark": "#d06b1e",
+      "orange-bright": "#f89406",
+      teal: "#4298b5",
+      "teal-bright": "#00ffff",
+      purple: "#830065",
+      "purple-bright": "#dda0dd",
+      gray: "#535c5c",
+      "gray-light": "#cccccc",
+      "blue-light": "#e3f0f4",
     },
     container: {
       center: true
@@ -32,9 +36,25 @@ module.exports = {
       sans: ["Open Sans", "Helvetica Neue", "Helvetica", "Arial", "sans-serif"],
       serif: ["Sentinel A", "Sentinel B", "Bookman Old Style Regular", "serif"]
     },
+    gradientColorStops: theme => ({
+      "black-10": "rgba(19, 23, 22, 0.1)",
+      "black-20": "rgba(19, 23, 22, 0.2)",
+      "black-30": "rgba(19, 23, 22, 0.3)",
+      "black-40": "rgba(19, 23, 22, 0.4)",
+      "black-50": "rgba(19, 23, 22, 0.5)",
+      "black-60": "rgba(19, 23, 22, 0.6)",
+      "black-70": "rgba(19, 23, 22, 0.7)",
+      "black-80": "rgba(19, 23, 22, 0.8)",
+      "black-90": "rgba(19, 23, 22, 0.9)",
+      "white": "#fff",
+      "green": "#00AC3E",
+      "green-dark": "#029F3B",
+      "green-darker": "#007129",
+    }),
     extend: {
       minHeight: {
         '24': '6rem',
+        '30': '7rem',
         '48': '12rem',
         '64': '16rem',
         '80': '20rem',
@@ -46,11 +66,14 @@ module.exports = {
         '176': '44rem',
         '184': '46rem',
         '200': '50rem',
-        '224': '56rem'
+        '224': '56rem',
+        '248': '62rem'
       },
     },
   },
-  variants: {},
+  variants: {
+    backgroundColor: ['responsive', 'hover', 'focus', 'group-hover'],
+  },
   plugins: [
     plugin(function ({ addUtilities, theme, addComponents }) {
 
@@ -84,6 +107,7 @@ module.exports = {
           [`.bg-${name}-overlay-70`] : { backgroundColor: `rgba(${hexToRGB(color)},0.7)`},
           [`.bg-${name}-overlay-80`] : { backgroundColor: `rgba(${hexToRGB(color)},0.8)`},
           [`.bg-${name}-overlay-90`] : { backgroundColor: `rgba(${hexToRGB(color)},0.9)`},
+          [`.bg-${name}-overlay-95`] : { backgroundColor: `rgba(${hexToRGB(color)},0.95)`},
         }),
       ]
 
@@ -93,25 +117,18 @@ module.exports = {
 
       addUtilities(overlayUtilities, ['responsive', 'hover', 'group-hover'])
 
-      const buttons = {
-        '.btn': {
-          padding: `${theme('spacing.3')} ${theme('spacing.5')}`,
-          borderRadius: theme('borderRadius.default'),
-          borderWidth: theme('borderWidth.default'),
-          fontSize: theme('fontSize.lg')
-        },
-        '.btn-orange': {
-          backgroundColor: theme('colors.orange'),
-          color: theme('colors.white'),
-          borderColor: theme('colors.black'),
-          '&:hover': {
-            backgroundColor: theme('colors.white'),
-            color: theme('colors.orange')
-          },
-        }
-      }
+      const arrowGenerators = [
+        (color, name) => ({
+          [`.${name}-arrow-top`] : { borderTopColor: color},
+          [`.${name}-arrow-bottom`] : { borderLeftColor: color, borderRightColor: color},
+        }),
+      ]
 
-      addComponents(buttons)
+      const arrowUtilities = _.flatMap(arrowGenerators, generator => {
+        return _.flatMap(defaultColors, generator)
+      })
+
+      addUtilities(arrowUtilities, ['responsive', 'hover', 'group-hover'])
 
       const textShadows = {
         '.text-shadow' : {
