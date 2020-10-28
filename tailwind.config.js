@@ -4,6 +4,8 @@ const plugin = require('tailwindcss/plugin')
 module.exports = {
   purge: [
     './*.php',
+    './inc/*.php',
+    './blocks/*.php',
     './template-parts/*.php',
     './src/css/*.css',
     './src/css/**/*.css',
