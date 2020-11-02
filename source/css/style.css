@@ -44,3 +44,7 @@ x-cloak {
 #amenities ul {
     @apply list-outside list-disc pl-6;
 }
+
+.entry-content ul {
+    @apply list-inside list-disc my-6 pl-2;
+}

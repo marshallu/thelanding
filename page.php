@@ -12,24 +12,18 @@
  * @package TheLanding
  */
 
-get_header();
+get_header( 'basic' );
 
-if ( is_home() ) {
-	echo '<img src="<?php echo get_template_directory_uri() ?>/images/Banner_BDS-scaled.jpg">';	}
 ?>
-	<div class="w-full xl:max-w-screen-xl xl:mx-auto bg-white">
-		<div>
+	<div class="w-full xl:max-w-screen-xl xl:mx-auto px-6 lg:px-0 bg-white mt-24 pt-8 pb-16">
+		<div class="w-full lg:w-3/4">
 			<?php while (have_posts()) : the_post(); ?>
 				<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
 					<header>
-
-						<?php if ( ! is_home() ) {
-							get_template_part('template-parts/page-title');
-						}
-						 ?>
+						<?php get_template_part('template-parts/page-title'); ?>
 					</header>
 
-					<div class="entry-content px-6 py-12 ">
+					<div class="entry-content">
 						<?php the_content(); ?>
 					</div>
 				</article>
