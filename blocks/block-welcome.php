@@ -20,7 +20,7 @@ echo '<h2 class="font-serif text-4xl lg:text-6xl text-green-bright uppercase tra
 if ( $welcome_subtitle ) {
     echo '<div class="uppercase font-semibold text-gray mt-3 text-xl lg:text-3xl">' . esc_attr( $welcome_subtitle ) . '</div>';
 }
-echo '<div class="text-gray leading-loose text-lg my-6">';
+echo '<div class="text-gray leading-loose text-lg my-6 welcome-content">';
 echo $welcome_content;
 echo '</div>';
 echo '</div>';
