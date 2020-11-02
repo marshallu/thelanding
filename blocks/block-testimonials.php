@@ -37,7 +37,7 @@ echo '<template x-for="(item,index) in items" :key="index">';
     echo '<div class="w-full flex-shrink-0 flex flex-wrap">';
     echo '<div class="w-full lg:w-1/3"><img class="h-56 w-56 mx-auto" :src="item.photo.url" :alt="item.name" /></div>';
     echo '<div class="w-full lg:w-2/3 mt-4 lg:mt-0">';
-    echo '<div class="text-white text-2xl lg:text-3xl">"<span x-text="item.quote"></span>"</div>';
+    echo '<div class="text-white text-base lg:text-xl">"<span x-text="item.quote"></span>"</div>';
     echo '<div class="text-white text- mt-3 uppercase" x-text="item.name"></div>';
     echo '</div>';
     echo '</div>';

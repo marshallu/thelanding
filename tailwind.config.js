@@ -2,14 +2,13 @@ const _ = require('lodash')
 const plugin = require('tailwindcss/plugin')
 
 module.exports = {
-  purge: [
-    './*.php',
-    './inc/*.php',
-    './blocks/*.php',
-    './template-parts/*.php',
-    './src/css/*.css',
-    './src/css/**/*.css',
-  ],
+//   purge: [
+//       './blocks/block-floor-plans.php',
+//       './template-parts/*.php',
+//       './src/css/*.css',
+//       './src/css/**/*.css',
+//       './*.php',
+//   ],
   theme: {
     colors: {
       transparent: "transparent",

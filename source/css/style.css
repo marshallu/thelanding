@@ -12,6 +12,10 @@ x-cloak {
     @apply hidden;
 }
 
+.welcome-content p:not(:first-child) {
+    @apply mt-6;
+}
+
 .footer-flag {
     background-image: none;
 }
