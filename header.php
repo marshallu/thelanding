@@ -25,8 +25,17 @@
 
     <script type="module" src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
     <script nomodule src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine-ie11.min.js" defer></script>
+    <script async src="//www.googletagmanager.com/gtag/js?id=UA-2931131-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
 
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
 
+		gtag('config', 'UA-2931131-1');
+	</script>
 </head>
 
 <body <?php body_class(); ?>>
@@ -93,14 +102,14 @@
                                     </div>
                                 </div>
                                 <div class="border-b border-orange"><a href="#" x-on:click.prevent="window.scroll({ top: ($refs.contact.offsetTop - 148), left: 0, behavior: 'smooth' }); mobileMenuOpen = false" class="block py-4 px-6 text-white">Contact Us</a></div>
-                                <div class="border-b border-orange"><a href="#" class="block py-4 px-6 text-white">Apply Now</a></div>
+                                <div class="border-b border-orange"><a href="https://marshall.az1.qualtrics.com/jfe/form/SV_1zBDMCahIGYB4od" class="block py-4 px-6 text-white">Apply Now</a></div>
                             </div>
                         </div>
                     </nav>
                     <div class="hidden lg:inline-block fixed right-0 z-40" style="top: 12rem;">
                         <div class="inline-flex flex-col">
                             <div><a href="#" x-on:click.prevent="window.scroll({ top: ($refs.contact.offsetTop - 100), left: 0, behavior: 'smooth' })" class="block py-3 px-16 text-lg uppercase font-semibold border border-black rounded-tl-md border-r-0 text-white bg-orange hover:bg-orange-dark transition-colors duration-100">Contact Us</a></div>
-                            <div><a href="#" class="block py-3 px-16 text-lg uppercase font-semibold border border-black rounded-bl-md border-t-0 border-r-0 text-white bg-orange hover:bg-orange-dark transition-colors duration-100">Apply Now</a></div>
+                            <div><a href="https://marshall.az1.qualtrics.com/jfe/form/SV_1zBDMCahIGYB4od" class="block py-3 px-16 text-lg uppercase font-semibold border border-black rounded-bl-md border-t-0 border-r-0 text-white bg-orange hover:bg-orange-dark transition-colors duration-100">Apply Now</a></div>
                         </div>
                     </div>
 
