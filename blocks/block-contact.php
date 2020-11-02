@@ -26,5 +26,6 @@ echo '<div class="text-white uppercase text-lg text-center bg-teal py-4 font-sem
 echo '<div class="arrow-top teal-arrow-top"></div>';
 echo '</div>';
 echo '<div class="py-6">';
+echo do_shortcode( '[vfb id=1]' );
 echo '</div>';
 echo '</div>';
