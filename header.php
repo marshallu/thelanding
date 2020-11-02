@@ -45,16 +45,16 @@
                                     <div class="hidden lg:inline-block text-center"><a href="#" x-on:click.prevent="window.scroll({ top: ($refs.floorPlans.offsetTop - 152), left: 0, behavior: 'smooth' })" :class="{ 'text-teal-bright hover:text-teal-bright' : active === 'floorPlans' }" class="py-5 block text-lg font-semibold text-white uppercase hover:text-green-brighter">Floor Plans</a></div>
                                     <div class="flex-1 lg:px-4 py-5 lg:mx-4 cursor-pointer" x-on:click="window.scrollTo(0,0)"><img src="<?php echo get_template_directory_uri() ?>/images/thelanding-logo-white.svg" class="h-16 mx-auto" alt="The Landing logo" /></div>
                                     <div class="hidden lg:inline-block text-center"><a href="#" x-on:click.prevent="window.scroll({ top: ($refs.map.offsetTop - 100), left: 0, behavior: 'smooth' })" :class="{ 'text-teal-bright hover:text-teal-bright' : active === 'map' }" class="py-5 block text-lg font-semibold text-white uppercase hover:text-green-brighter">Neighborhood</a></div>
-                                    <div class="hidden lg:inline-block text-center"><a href="#" class="py-5 block text-lg font-semibold text-white uppercase hover:text-green-brighter">FAQs</a></div>
-                                    <div class="hidden lg:inline-block text-center"><a href="#" class="py-5 block text-lg font-semibold text-white uppercase hover:text-green-brighter">Short-Term Stay</a></div>
+                                    <div class="hidden lg:inline-block text-center"><a href="/thelanding/faqs/" class="py-5 block text-lg font-semibold text-white uppercase hover:text-green-brighter">FAQs</a></div>
+                                    <div class="hidden lg:inline-block text-center"><a href="/thelanding/short-term-stay/" class="py-5 block text-lg font-semibold text-white uppercase hover:text-green-brighter">Short-Term Stay</a></div>
                                     <div class="hidden lg:inline-block text-center relative z-50 h-full" x-data="{ open: false }" x-on:mouseover="open = true" x-on:mouseleave="open = false">
                                         <span class="py-5 block text-lg font-semibold text-white uppercase hover:text-green-brighter cursor-pointer" x-on:mouseover="open = true" x-on:mouseleave="open = false">Residents</span>
                                         <div x-show="open" class="w-64 absolute right-0 bg-gray-overlay-95 text-left" x-cloak>
-                                            <a href="#" class="w-full px-4 py-3 flex items-start text-white hover:text-green-brighter group">
+                                            <a href="http://mymu.marshall.edu" class="w-full px-4 py-3 flex items-start text-white hover:text-green-brighter group">
                                                 <span class="h-5 w-1 bg-green-brighter mr-3 mt-1"></span>
                                                 <span class="text-lg uppercase">Pay Rent</span>
-                                            </a href="#">
-                                            <a href="#" class="w-full px-4 py-3 flex items-start text-white hover:text-green-brighter group">
+                                            </a>
+                                            <a href="https://www.maintenancecare.com/maintenancecare/portal/action/RequestAction/form/mcrequestpage?buildingkey=612-P-161f6ebc5d8-14b8b&buildingid=1300&user=marshall001" class="w-full px-4 py-3 flex items-start text-white hover:text-green-brighter group">
                                                 <span class="h-5 w-1 bg-green-brighter mr-3 mt-1"></span>
                                                 <span class="text-lg uppercase">Submit Work Order</span>
                                             </a>
@@ -79,8 +79,8 @@
                             <div class="border-b border-orange"><a href="#" x-on:click.prevent="window.scroll({ top: ($refs.amenities.offsetTop - 104), left: 0, behavior: 'smooth' }); mobileMenuOpen = false" :class="{ 'tex-white' : active === 'amenities' }" class="block py-4 px-6 text-white">Amenities</a></div>
                             <div class="border-b border-orange"><a href="#" x-on:click.prevent="window.scroll({ top: ($refs.floorPlans.offsetTop - 152), left: 0, behavior: 'smooth' }); mobileMenuOpen = false" :class="{ 'tex-white' : active === 'floorPlans' }" class="block py-4 px-6 text-white">Floor Plans</a></div>
                             <div class="border-b border-orange"><a href="#" x-on:click.prevent="window.scroll({ top: ($refs.map.offsetTop - 100), left: 0, behavior: 'smooth' }); mobileMenuOpen = false" :class="{ 'tex-white' : active === 'map' }" class="block py-4 px-6 text-white">Neighborhood</a></div>
-                            <div class="border-b border-orange"><a href="#" class="block py-4 px-6 text-white">FAQs</a></div>
-                            <div class="border-b border-orange"><a href="#" class="block py-4 px-6 text-white">Short-Term Stay</a></div>
+                            <div class="border-b border-orange"><a href="/thelanding/faqs/" class="block py-4 px-6 text-white">FAQs</a></div>
+                            <div class="border-b border-orange"><a href="/thelanding/short-term-stay/" class="block py-4 px-6 text-white">Short-Term Stay</a></div>
                             <div class="border-b border-orange" x-data="{ open: false }">
                                     <a href="#" class="block py-4 px-6 text-white flex items-center" x-on:click="open = !open">
                                         <span>Residents</span>
@@ -88,8 +88,8 @@
                                         <svg x-show="!open" class="ml-4 text-white fill-current h-3 w-3" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"></path></svg>
                                     </a>
                                     <div x-show="open" class="bg-orange absolute w-full left-0 text-left" x-cloak>
-                                        <div class="w-full border-b border-orange-dark"><a href="#" class="block py-3 pl-8 pr-6 text-white">Pay Rent</a></div>
-                                        <div class="w-full border-b border-orange-dark"><a href="#" class="block py-3 pl-8 pr-6 text-white">Submit Work Order</a></div>
+                                        <div class="w-full border-b border-orange-dark"><a href="http://mymu.marshall.edu" class="block py-3 pl-8 pr-6 text-white">Pay Rent</a></div>
+                                        <div class="w-full border-b border-orange-dark"><a href="https://www.maintenancecare.com/maintenancecare/portal/action/RequestAction/form/mcrequestpage?buildingkey=612-P-161f6ebc5d8-14b8b&buildingid=1300&user=marshall001" class="block py-3 pl-8 pr-6 text-white">Submit Work Order</a></div>
                                     </div>
                                 </div>
                                 <div class="border-b border-orange"><a href="#" x-on:click.prevent="window.scroll({ top: ($refs.contact.offsetTop - 148), left: 0, behavior: 'smooth' }); mobileMenuOpen = false" class="block py-4 px-6 text-white">Contact Us</a></div>
