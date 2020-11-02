@@ -30,7 +30,7 @@ echo '<template x-for="(item,index) in items" :key="index">';
     echo '<div class="w-full lg:w-1/2 lg:px-4">';
     echo '<h3 class="text-gray font-serif text-2xl lg:text-4xl" x-text="item.title"></h3>';
     echo '<div class="text-gray my-4 leading-loose text-lg" x-html="item.content"></div>';
-    echo '<div class="block py-6 text-center"><a :href="item.button.url" class="bg-white border rounded-md border-black text-orange px-4 py-4 text-lg uppercase font-semibold hover:bg-orange hover:text-white transition-colors duration-150" >Learn More</a></div>';
+    echo '<div class="block py-6 text-center"><a :href="item.button.url" class="bg-white border rounded-md border-black text-orange px-4 py-4 text-lg uppercase font-semibold hover:bg-orange hover:text-white transition-colors duration-150" x-text="item.button.title"></a></div>';
     echo '</div>';
     echo '</div>';
 echo '</div>';
