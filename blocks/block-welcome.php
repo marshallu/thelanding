@@ -23,4 +23,8 @@ if ( $welcome_subtitle ) {
 echo '<div class="text-gray leading-loose text-lg my-6 welcome-content">';
 echo $welcome_content;
 echo '</div>';
+echo '<div class="lg:hidden w-full">';
+echo '<div class="w-full"><a href="#" x-on:click.prevent="window.scroll({ top: ($refs.contact.offsetTop - 148), left: 0, behavior: \'smooth\' })" class="bg-white border-2 border-black rounded text-orange w-full py-3 text-center block text-lg font-semibold uppercase">Contact Us</a></div>';
+echo '<div class="w-full"><a href="https://marshall.az1.qualtrics.com/jfe/form/SV_1zBDMCahIGYB4od" class="bg-white border-2 border-black rounded text-orange w-full py-3 text-center block text-lg font-semibold uppercase mt-4">Apply Now</a></div>';
+echo '</div>';
 echo '</div>';
