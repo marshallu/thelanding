@@ -248,3 +248,164 @@ function thelanding_map($atts, $content = null)
     return '<iframe x-ref="map" id="map" class="w-full min-h-160" src="' . $url . '" frameborder="0" scrolling="no" border="0" allow="geolocation"></iframe>';
 }
 add_shortcode('thelanding_map', 'thelanding_map');
+
+// function mu_efs_tw_toggles($params, $content = null) {
+// 	extract(shortcode_atts(array(
+// 		'spaced' => true,
+// 	), $params));
+
+// 	if ($spaced == true) {
+// 		$class = " my-6 ";
+// 	} else {
+// 		$class = " mt-3 ";
+// 	}
+
+// 	$content = str_replace("]<br />", ']', $content);
+// 	$content = str_replace("]<br>", ']', $content);
+// 	$result = '<div class="' . $class . '">' . do_shortcode($content) . '</div>';
+// 	return $result;
+// }
+
+// function mu_efs_tw_toggle($params, $content = null) {
+// 	extract(shortcode_atts(array(
+// 		'id' => '',
+// 		'title' => 'title',
+// 		'active' => false,
+// 		'solo' => false,
+// 	), $params));
+
+// 	if ( $active ) {
+// 		$open = 'true';
+// 	} else {
+// 		$open = 'false';
+// 	}
+
+// 	// return $content;
+// 	$title = str_replace("<strong>", '', $title);
+// 	$title = str_replace("<b>", '', $title);
+// 	$title = str_replace("</strong>", '', $title);
+// 	$title = str_replace("</b>", '', $title);
+// 	$content = str_replace("<br />", '', $content);
+// 	$content = str_replace("<br>", '', $content);
+// 	$content = str_replace("<p></p>", '', $content);
+
+// 	if ($solo == true) {
+// 		$out = '<div id="' . $id . '" class="accordion '. $class . ' mb-4" x-data="{ toggleOpen: ' . $open . ' }" x-on:click.away="toggleOpen = false">';
+// 	} else {
+// 		$out = '<div id="' . $id . '" class="accordion '. $class . ' mb-4" x-data="{ toggleOpen: ' . $open . ' }">';
+// 	}
+// 	$out .= '<div class="flex justify-between bg-gray-100 text-gray-800 items-center cursor-pointer group border border-gray-200" x-on:click="toggleOpen = !toggleOpen">';
+// 	$out .= '<div class="py-4 px-4 text-base font-semibold tracking-wide">' . esc_attr($title) . '</div>';
+// 	$out .= '<div class="py-4 px-4">';
+// 	$out .= '<svg aria-hidden="true" :class="{ \'hidden\' : !toggleOpen}" class="text-gray-700 hidden h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg>';
+// 	$out .= '<svg aria-hidden="true" :class="{ \'hidden\' : toggleOpen}" class="text-gray-700 h-4 w-4 fill-current"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg>';
+// 	$out .= '</div>';
+// 	$out .= '</div>';
+// 	$out .= '<div class="bg-white border border-gray-200 border-t-0 rounded-b text-gray-700 px-6 py-6 hidden" :class="{ \'hidden\' : !toggleOpen}">';
+// 	$out .= do_shortcode($content);
+// 	$out .= '</div>';
+// 	$out .= '</div>';
+// 	return $out;
+// }
+
+// add_shortcode('efstoggles', 'mu_efs_tw_toggles');
+// add_shortcode('efstoggle', 'mu_efs_tw_toggle');
+
+
+class Marsha_Toggles
+{
+	private $header_tag = null;
+
+	public function __construct() {
+		add_shortcode( 'efstoggles', [ $this, 'mu_toggles' ] );
+		add_shortcode( 'efstoggle', [ $this, 'mu_toggle' ] );
+		add_shortcode( 'mu_toggles', [ $this, 'mu_toggles' ] );
+		add_shortcode( 'mu_toggle', [ $this, 'mu_toggle' ] );
+	}
+
+	public function mu_toggles( $atts, $content = null ) {
+
+		$data = shortcode_atts(
+			array(
+				'spaced' 	 => true,
+				'header_tag' => null,
+				'class' 	 => ''
+			),
+			$atts
+		);
+
+		if ( $data['header_tag'] ) {
+			$this->header_tag = $data['header_tag'];
+		} else {
+			$this->header_tag = 'div';
+		}
+
+		if ($data['spaced'] == true) {
+			$spacing_class = " my-6 ";
+		} else {
+			$spacing_class = " mt-3 ";
+		}
+
+		$html = sprintf(
+			'<div class="%s %s">
+			%s
+			</div>',
+			esc_attr( $spacing_class ),
+			esc_attr( $data['class'] ),
+			do_shortcode( $content )
+		);
+
+		return $html;
+	}
+
+	public function mu_toggle( $atts, $content = null ) {
+
+		$data = shortcode_atts(
+			array(
+				'id' 	 => '',
+				'title'  => 'title',
+				'active' => false,
+				'solo' 	 => false,
+			),
+			$atts
+		);
+
+		if ( $data['active'] ) {
+			$open = 'true';
+		} else {
+			$open = 'false';
+		}
+		if ( $data['solo'] == true ) {
+			$opening_div = '<div id="' . $id . '" class="accordion '. $class . ' mb-4" x-data="{ toggleOpen: ' . $open . ' }" x-on:click.away="toggleOpen = false">';
+		} else {
+			$opening_div = '<div id="' . $id . '" class="accordion '. $class . ' mb-4" x-data="{ toggleOpen: ' . $open . ' }">';
+		}
+
+		$html = sprintf(
+			'%s
+			<div class="flex justify-between bg-green text-white items-center cursor-pointer group border border-black" x-on:click="toggleOpen = !toggleOpen">
+			<%s class="accordion-title py-4 px-4 text-base font-semibold tracking-wide">%s</%s>
+			<div class="py-4 px-4">
+			<svg aria-hidden="true" :class="{ \'hidden\' : !toggleOpen}" class="text-gray-700 hidden h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg>
+			<svg aria-hidden="true" :class="{ \'hidden\' : toggleOpen}" class="text-gray-700 h-4 w-4 fill-current"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg>
+			</div>
+			</div>
+			<div class="bg-white border border-black border-t-0 rounded-b text-gray-700 px-6 py-6 hidden" :class="{ \'hidden\' : !toggleOpen}">
+			%s
+			</div>
+			</div>',
+			$opening_div,
+			$this->header_tag,
+			esc_attr( $data['title'] ),
+			$this->header_tag,
+			do_shortcode( $content )
+		);
+
+		return $html;
+
+
+	}
+
+}
+
+new Marsha_Toggles();
