@@ -42,7 +42,7 @@
 <?php wp_body_open(); ?>
     <div x-data="navigation()" x-on:scroll.window.debounce.100="scrollWatch()">
         <header>
-            <div class="relative bg-no-repeat bg-cover min-h-128 lg:min-h-248" style="background-image: url(<?php echo get_template_directory_uri() ?>/images/thelanding-hero-2.jpg); background-position: 0% 100%">
+            <div class="relative bg-no-repeat bg-cover min-h-128 lg:min-h-248" style="background-image: url(<?php echo get_template_directory_uri() ?>/images/thelanding-hero-2.jpg); background-position: 40% 100%">
                 <div class="absolute inset-0 h-full flex justify-between flex-col pb-40 bg-gradient-to-t from-black-50 to-black-10">
                     <nav class="fixed top-0 w-full z-50">
                         <div class="w-full bg-gray-overlay-95">
