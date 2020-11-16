@@ -35,7 +35,10 @@
 		gtag('js', new Date());
 
 		gtag('config', 'UA-2931131-1');
-	</script>
+    </script>
+    <style>
+        x-cloak { display: none }
+    </style>
 </head>
 
 <body <?php body_class(); ?>>
