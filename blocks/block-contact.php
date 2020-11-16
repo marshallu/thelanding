@@ -12,7 +12,7 @@
 $left_column  = get_field( 'left_column' );
 $right_column = get_field( 'right_column' );
 
-echo '<div id="contact" x-ref="contact" class="flex flex-wrap">';
+echo '<div class="flex flex-wrap">';
 
 echo '<div class="w-full lg:w-1/2 bg-gray-light pb-12">';
 echo '<div class="text-white uppercase text-lg text-center bg-green py-4 font-semibold">Follow Us</div>';
@@ -22,7 +22,7 @@ echo '<iframe class="mx-auto" src="https://www.facebook.com/plugins/page.php?hre
 echo '</div>';
 echo '</div>';
 
-echo '<div class="w-full lg:w-1/2 bg-blue-light pb-12">';
+echo '<div id="contact" x-ref="contact" class="w-full lg:w-1/2 bg-blue-light pb-12">';
 echo '<div class="text-white uppercase text-lg text-center bg-teal py-4 font-semibold">Contact Us</div>';
 echo '<div class="arrow-top teal-arrow-top"></div>';
 echo '<div class="py-6">';
