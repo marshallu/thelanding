@@ -13,7 +13,7 @@ $testimonial         = get_field( 'testimonial' );
 $background_image    = get_field( 'background_image');
 $background_position = get_field( 'background_position' );
 
-echo '<div id="testimonials" x-ref="testimonials" class="relative bg-no-repeat bg-cover min-h-144 lg:min-h-128" style="background-image: url(' . esc_url( $background_image['url'] ) . '); background-position: ' . esc_attr( $background_position ) . '">';
+echo '<div id="testimonials" x-ref="testimonials" class="relative bg-no-repeat bg-cover min-h-160 lg:min-h-128" style="background-image: url(' . esc_url( $background_image['url'] ) . '); background-position: ' . esc_attr( $background_position ) . '">';
 echo '<div class="absolute inset-0 h-full bg-purple-overlay-80">';
 echo '<div class="w-full xl:max-w-screen-xl xl:mx-auto px-8 lg:px-0 h-full">';
 
