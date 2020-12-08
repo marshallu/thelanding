@@ -16,6 +16,7 @@ $photo_2         = get_field( 'photo_2' );
 $photo_3         = get_field( 'photo_3' );
 $photo_4         = get_field( 'photo_4' );
 $photo_5         = get_field( 'photo_5' );
+$button          = get_field( 'button' );
 
 echo '<div id="gallery" x-ref="gallery" class="w-full bg-blue-light py-24">';
 echo '<div class="w-full xl:max-w-screen-xl xl:mx-auto px-8 lg:px-0">';
@@ -39,4 +40,7 @@ echo '</div>';
 echo '</div>';
 
 echo '</div>';
+if ( $button ) {
+    echo '<div class="text-center mt-6 block"><a href="' . esc_url( $button['url'] ) . '" class="inline-block border rounded-md bg-purple text-white px-4 py-4 text-lg uppercase font-semibold hover:bg-purple-bright hover:text-purple transition-colors duration-150">' . esc_attr( $button['title'] ) . '</a></div>';
+}
 echo '</div>';

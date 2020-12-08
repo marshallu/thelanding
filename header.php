@@ -48,25 +48,25 @@
             <div class="relative bg-no-repeat bg-cover min-h-128 lg:min-h-248" style="background-image: url(<?php echo get_template_directory_uri() ?>/images/thelanding-hero-building.jpg); background-position: 40% 100%">
                 <div class="absolute inset-0 h-full flex justify-between flex-col pb-40 bg-gradient-to-t from-black-50 to-black-10">
                     <nav class="fixed top-0 w-full z-50">
-                        <div class="w-full bg-gray-overlay-95">
+                        <div class="w-full bg-green-overlay-90">
                             <div class="block w-full xl:max-w-screen-xl xl:mx-auto">
                                 <div class="flex items-center lg:space-x-6 justify-between transition-colors duration-75">
-                                    <div class="hidden lg:inline-block text-center"><a href="#" x-on:click.prevent="window.scroll({ top: ($refs.gallery.offsetTop - 104), left: 0, behavior: 'smooth' })" :class="{ 'text-teal-bright hover:text-teal-bright' : active === 'gallery' }" class="py-5 block text-lg font-semibold text-white uppercase hover:text-green-brighter">Gallery</a></div>
-                                    <div class="hidden lg:inline-block text-center"><a href="#" x-on:click.prevent="window.scroll({ top: ($refs.community.offsetTop - 104), left: 0, behavior: 'smooth' })" :class="{ 'text-teal-bright hover:text-teal-bright' : active === 'community' }" class="py-5 block text-lg font-semibold text-white uppercase hover:text-green-brighter">Community Features</a></div>
-                                    <div class="hidden lg:inline-block text-center"><a href="#" x-on:click.prevent="window.scroll({ top: ($refs.amenities.offsetTop - 104), left: 0, behavior: 'smooth' })" :class="{ 'text-teal-bright hover:text-teal-bright' : active === 'amenities' }" class="py-5 block text-lg font-semibold text-white uppercase hover:text-green-brighter">Amenities</a></div>
-                                    <div class="hidden lg:inline-block text-center"><a href="#" x-on:click.prevent="window.scroll({ top: ($refs.floorPlans.offsetTop - 152), left: 0, behavior: 'smooth' })" :class="{ 'text-teal-bright hover:text-teal-bright' : active === 'floorPlans' }" class="py-5 block text-lg font-semibold text-white uppercase hover:text-green-brighter">Floor Plans</a></div>
+                                    <div class="hidden lg:inline-block text-center"><a href="#" x-on:click.prevent="window.scroll({ top: ($refs.gallery.offsetTop - 104), left: 0, behavior: 'smooth' })" :class="{ 'text-teal-bright hover:text-teal-bright' : active === 'gallery' }" class="block text-lg font-semibold text-white uppercase border-b-4 border-transparent hover:border-orange-bright">Gallery</a></div>
+                                    <div class="hidden lg:inline-block text-center"><a href="#" x-on:click.prevent="window.scroll({ top: ($refs.community.offsetTop - 104), left: 0, behavior: 'smooth' })" :class="{ 'text-teal-bright hover:text-teal-bright' : active === 'community' }" class="block text-lg font-semibold text-white uppercase border-b-4 border-transparent hover:border-orange-bright">Community Features</a></div>
+                                    <div class="hidden lg:inline-block text-center"><a href="#" x-on:click.prevent="window.scroll({ top: ($refs.amenities.offsetTop - 104), left: 0, behavior: 'smooth' })" :class="{ 'text-teal-bright hover:text-teal-bright' : active === 'amenities' }" class="block text-lg font-semibold text-white uppercase border-b-4 border-transparent hover:border-orange-bright">Amenities</a></div>
+                                    <div class="hidden lg:inline-block text-center"><a href="#" x-on:click.prevent="window.scroll({ top: ($refs.floorPlans.offsetTop - 152), left: 0, behavior: 'smooth' })" :class="{ 'text-teal-bright hover:text-teal-bright' : active === 'floorPlans' }" class="block text-lg font-semibold text-white uppercase border-b-4 border-transparent hover:border-orange-bright">Floor Plans</a></div>
                                     <div class="flex-1 lg:px-4 py-5 lg:mx-4 cursor-pointer" x-on:click="window.scrollTo(0,0)"><img src="<?php echo get_template_directory_uri() ?>/images/thelanding-logo-white.svg" class="h-16 mx-auto" alt="The Landing logo" /></div>
-                                    <div class="hidden lg:inline-block text-center"><a href="#" x-on:click.prevent="window.scroll({ top: ($refs.map.offsetTop - 100), left: 0, behavior: 'smooth' })" :class="{ 'text-teal-bright hover:text-teal-bright' : active === 'map' }" class="py-5 block text-lg font-semibold text-white uppercase hover:text-green-brighter">Neighborhood</a></div>
-                                    <div class="hidden lg:inline-block text-center"><a href="/thelanding/faqs/" class="py-5 block text-lg font-semibold text-white uppercase hover:text-green-brighter">FAQs</a></div>
-                                    <div class="hidden lg:inline-block text-center"><a href="/thelanding/short-term-stay/" class="py-5 block text-lg font-semibold text-white uppercase hover:text-green-brighter">Short-Term Stay</a></div>
+                                    <div class="hidden lg:inline-block text-center"><a href="#" x-on:click.prevent="window.scroll({ top: ($refs.map.offsetTop - 100), left: 0, behavior: 'smooth' })" :class="{ 'text-teal-bright hover:text-teal-bright' : active === 'map' }" class="block text-lg font-semibold text-white uppercase border-b-4 border-transparent hover:border-orange-bright">Neighborhood</a></div>
+                                    <div class="hidden lg:inline-block text-center"><a href="/thelanding/faqs/" class="block text-lg font-semibold text-white uppercase border-b-4 border-transparent hover:border-orange-bright">FAQs</a></div>
+                                    <div class="hidden lg:inline-block text-center"><a href="/thelanding/short-term-stay/" class="block text-lg font-semibold text-white uppercase border-b-4 border-transparent hover:border-orange-bright">Short-Term Stay</a></div>
                                     <div class="hidden lg:inline-block text-center relative z-50 h-full" x-data="{ open: false }" x-on:mouseover="open = true" x-on:mouseleave="open = false">
-                                        <span class="py-5 block text-lg font-semibold text-white uppercase hover:text-green-brighter cursor-pointer" x-on:mouseover="open = true" x-on:mouseleave="open = false">Residents</span>
+                                        <span class="block text-lg font-semibold text-white uppercase border-b-4 border-transparent hover:border-orange-bright cursor-pointer" x-on:mouseover="open = true" x-on:mouseleave="open = false">Residents</span>
                                         <div x-show="open" class="w-64 absolute right-0 bg-gray-overlay-95 text-left" x-cloak>
-                                            <a href="http://mymu.marshall.edu" class="w-full px-4 py-3 flex items-start text-white hover:text-green-brighter group">
+                                            <a href="http://mymu.marshall.edu" class="w-full px-4 py-3 flex items-start text-white group">
                                                 <span class="h-5 w-1 bg-green-brighter mr-3 mt-1"></span>
                                                 <span class="text-lg uppercase">Pay Rent</span>
                                             </a>
-                                            <a href="https://www.maintenancecare.com/maintenancecare/portal/action/RequestAction/form/mcrequestpage?buildingkey=612-P-161f6ebc5d8-14b8b&buildingid=1300&user=marshall001" class="w-full px-4 py-3 flex items-start text-white hover:text-green-brighter group">
+                                            <a href="https://www.maintenancecare.com/maintenancecare/portal/action/RequestAction/form/mcrequestpage?buildingkey=612-P-161f6ebc5d8-14b8b&buildingid=1300&user=marshall001" class="w-full px-4 py-3 flex items-start text-white group">
                                                 <span class="h-5 w-1 bg-green-brighter mr-3 mt-1"></span>
                                                 <span class="text-lg uppercase">Submit Work Order</span>
                                             </a>
@@ -75,7 +75,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="arrow-top lg:arrow-top-lg gray-95-arrow-top"></div>
+                        <div class="arrow-top lg:arrow-top-lg green-90-arrow-top"></div>
                         <div class="relative">
                             <div class="lg:-mt-12 lg:hidden bg-orange px-2 py-2 text-white inline-block absolute z-10 top-0 right-0" :class="{ '-mt-8' : !mobileMenuOpen }">
                                 <svg x-show="mobileMenuOpen == false" x-on:click="mobileMenuOpen = true" class="fill-current w-8 h-8 lg:hidden cursor-pointer text-white" role="button" aria-label="show mobile menu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

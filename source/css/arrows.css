@@ -19,6 +19,9 @@
         border-right: theme('spacing.12') solid transparent;
         border-top-width: theme('spacing.12');
     }
+    .green-90-arrow-top {
+        border-top-color: rgba(0,172,62,0.9);
+    }
     .gray-95-arrow-top {
         border-top-color: rgba(83,92,92,0.95);
     }
