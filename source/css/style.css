@@ -12,10 +12,17 @@ x-cloak {
     @apply hidden;
 }
 
+.accordion p:not(:first-child),
 .welcome-content p:not(:first-child) {
     @apply mt-6;
 }
 
+.accordion a {
+    @apply text-green underline;
+}
+.accordion a:hover {
+    @apply text-orange underline;
+}
 .footer-flag {
     background-image: none;
 }

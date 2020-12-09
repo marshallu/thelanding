@@ -8,8 +8,8 @@
  */
 
 if ( ! defined( '_S_VERSION' ) ) {
-    // Replace the version number of the theme on each release.
-    define( '_S_VERSION', '1.0.0' );
+	// Replace the version number of the theme on each release.
+	define( '_S_VERSION', '1.0.0' );
 }
 
 // if ( ! function_exists( 'thelanding_setup' ) ) :
@@ -107,43 +107,43 @@ if ( ! defined( '_S_VERSION' ) ) {
 // add_action( 'after_setup_theme', 'thelanding_setup' );
 
 function register_theme_menus() {
-    register_nav_menus(
-        array(
-            'primary-menu' => esc_html__( 'Primary Menu', 'thelanding' ),
-            'menu-right' => esc_html__( 'Right Menu', 'thelanding' ),
-            'menu-footer' => esc_html__( 'Footer', 'thelanding' ),
-        )
-    );
+	register_nav_menus(
+		array(
+			'primary-menu' => esc_html__( 'Primary Menu', 'thelanding' ),
+			'menu-right' => esc_html__( 'Right Menu', 'thelanding' ),
+			'menu-footer' => esc_html__( 'Footer', 'thelanding' ),
+		)
+	);
 }
 add_action( 'init', 'register_theme_menus' );
 
 add_filter(
-    'body_class',
-    function ( $classes ) {
-        return array_merge( $classes, array( 'bg-light-brown' ) );
-    }
+	'body_class',
+	function ( $classes ) {
+		return array_merge( $classes, array( 'bg-light-brown' ) );
+	}
 );
 
 
 add_action( 'admin_footer', 'my_custom_fonts' );
 
 function my_custom_fonts() {
-    echo '<style>
-      .wp-block { max-width: 1100px; };
-      .edit-post-visual-editor p,
-      .edit-post-visual-editor,
-      .blocks-rich-text__tinymce.mce-content-body {
-        line-height: inherit;
-        font-size: inherit;
-      }
-      .editor-styles-wrapper .mce-content-body { line-height: inherit; }
-      .wp-block {
-        max-width: 1200px;
-      }
+	echo '<style>
+	  .wp-block { max-width: 1100px; };
+	  .edit-post-visual-editor p,
+	  .edit-post-visual-editor,
+	  .blocks-rich-text__tinymce.mce-content-body {
+		line-height: inherit;
+		font-size: inherit;
+	  }
+	  .editor-styles-wrapper .mce-content-body { line-height: inherit; }
+	  .wp-block {
+		max-width: 1200px;
+	  }
 
-      .block-editor-writing-flow {
-        padding-left: 3rem;
-      }
+	  .block-editor-writing-flow {
+		padding-left: 3rem;
+	  }
 
   </style>';
 }
@@ -156,7 +156,7 @@ function my_custom_fonts() {
  * @global int $content_width
  */
 function thelanding_content_width() {
-    $GLOBALS['content_width'] = apply_filters( 'thelanding_content_width', 640 );
+	$GLOBALS['content_width'] = apply_filters( 'thelanding_content_width', 640 );
 }
 add_action( 'after_setup_theme', 'thelanding_content_width', 0 );
 
@@ -166,17 +166,17 @@ add_action( 'after_setup_theme', 'thelanding_content_width', 0 );
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
 function thelanding_widgets_init() {
-    register_sidebar(
-        array(
-            'name'          => esc_html__( 'Sidebar', 'thelanding' ),
-            'id'            => 'sidebar-1',
-            'description'   => esc_html__( 'Add widgets here.', 'thelanding' ),
-            'before_widget' => '<section id="%1$s" class="widget %2$s">',
-            'after_widget'  => '</section>',
-            'before_title'  => '<h2 class="widget-title">',
-            'after_title'   => '</h2>',
-        )
-    );
+	register_sidebar(
+		array(
+			'name'          => esc_html__( 'Sidebar', 'thelanding' ),
+			'id'            => 'sidebar-1',
+			'description'   => esc_html__( 'Add widgets here.', 'thelanding' ),
+			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h2 class="widget-title">',
+			'after_title'   => '</h2>',
+		)
+	);
 }
 add_action( 'widgets_init', 'thelanding_widgets_init' );
 
@@ -184,7 +184,7 @@ add_action( 'widgets_init', 'thelanding_widgets_init' );
  * Enqueue scripts and styles.
  */
 function thelanding_scripts() {
-    wp_enqueue_style( 'thelanding-style', get_stylesheet_uri(), array(), _S_VERSION );
+	wp_enqueue_style( 'thelanding-style', get_stylesheet_uri(), array(), _S_VERSION );
 }
 add_action( 'wp_enqueue_scripts', 'thelanding_scripts' );
 
@@ -212,7 +212,7 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 if ( defined( 'JETPACK__VERSION' ) ) {
-    require get_template_directory() . '/inc/jetpack.php';
+	require get_template_directory() . '/inc/jetpack.php';
 }
 
 /**
@@ -220,96 +220,54 @@ if ( defined( 'JETPACK__VERSION' ) ) {
  */
 require get_template_directory() . '/inc/blocks.php';
 
+add_filter( 'the_content', 'marsha_shortcode_strip_empty_paragraph' );
+/**
+ * Filters the content to remove any extra paragraph or break tags
+ * caused by shortcodes.
+ *
+ * @since 1.0.0
+ *
+ * @param string $content  String of HTML content.
+ * @return string $content Amended string of HTML content.
+ */
+function marsha_shortcode_strip_empty_paragraph( $content ) {
+
+	$array = array(
+		'<p>['    => '[',
+		']</p>'   => ']',
+		']<br />' => ']'
+	);
+	return strtr( $content, $array );
+
+}
 
 function thelanding_map($atts, $content = null)
 {
-    $data = shortcode_atts(array(
-        'url' => '',
-        'src' => '',
-        'height' => '500px',
-        'width' => '100%',
-        'tour' => false,
-        'title' => '',
-        'button_text' => '',
-        'button_url' => '',
-        'full_width' => '',
-        'anchor' => '',
+	$data = shortcode_atts(array(
+		'url' => '',
+		'src' => '',
+		'height' => '500px',
+		'width' => '100%',
+		'tour' => false,
+		'title' => '',
+		'button_text' => '',
+		'button_url' => '',
+		'full_width' => '',
+		'anchor' => '',
 
-    ), $atts);
+	), $atts);
 
-    if (strpos($data['url'], '#') !== false) {
-        $pieces = explode("#", esc_url($data['url']));
-        $url = $pieces[0] . '&tbh#?fh/' . $pieces[1];
-    } else {
-        $url = $data['url'];
-    }
+	if (strpos($data['url'], '#') !== false) {
+		$pieces = explode("#", esc_url($data['url']));
+		$url = $pieces[0] . '&tbh#?fh/' . $pieces[1];
+	} else {
+		$url = $data['url'];
+	}
 
-    // https://map.concept3d.com/?id=1323&sbh&tbh#!m/377967
-    return '<iframe x-ref="map" id="map" class="w-full min-h-160" src="' . $url . '" frameborder="0" scrolling="no" border="0" allow="geolocation"></iframe>';
+	// https://map.concept3d.com/?id=1323&sbh&tbh#!m/377967
+	return '<iframe x-ref="map" id="map" class="w-full min-h-160" src="' . $url . '" frameborder="0" scrolling="no" border="0" allow="geolocation"></iframe>';
 }
 add_shortcode('thelanding_map', 'thelanding_map');
-
-// function mu_efs_tw_toggles($params, $content = null) {
-// 	extract(shortcode_atts(array(
-// 		'spaced' => true,
-// 	), $params));
-
-// 	if ($spaced == true) {
-// 		$class = " my-6 ";
-// 	} else {
-// 		$class = " mt-3 ";
-// 	}
-
-// 	$content = str_replace("]<br />", ']', $content);
-// 	$content = str_replace("]<br>", ']', $content);
-// 	$result = '<div class="' . $class . '">' . do_shortcode($content) . '</div>';
-// 	return $result;
-// }
-
-// function mu_efs_tw_toggle($params, $content = null) {
-// 	extract(shortcode_atts(array(
-// 		'id' => '',
-// 		'title' => 'title',
-// 		'active' => false,
-// 		'solo' => false,
-// 	), $params));
-
-// 	if ( $active ) {
-// 		$open = 'true';
-// 	} else {
-// 		$open = 'false';
-// 	}
-
-// 	// return $content;
-// 	$title = str_replace("<strong>", '', $title);
-// 	$title = str_replace("<b>", '', $title);
-// 	$title = str_replace("</strong>", '', $title);
-// 	$title = str_replace("</b>", '', $title);
-// 	$content = str_replace("<br />", '', $content);
-// 	$content = str_replace("<br>", '', $content);
-// 	$content = str_replace("<p></p>", '', $content);
-
-// 	if ($solo == true) {
-// 		$out = '<div id="' . $id . '" class="accordion '. $class . ' mb-4" x-data="{ toggleOpen: ' . $open . ' }" x-on:click.away="toggleOpen = false">';
-// 	} else {
-// 		$out = '<div id="' . $id . '" class="accordion '. $class . ' mb-4" x-data="{ toggleOpen: ' . $open . ' }">';
-// 	}
-// 	$out .= '<div class="flex justify-between bg-gray-100 text-gray-800 items-center cursor-pointer group border border-gray-200" x-on:click="toggleOpen = !toggleOpen">';
-// 	$out .= '<div class="py-4 px-4 text-base font-semibold tracking-wide">' . esc_attr($title) . '</div>';
-// 	$out .= '<div class="py-4 px-4">';
-// 	$out .= '<svg aria-hidden="true" :class="{ \'hidden\' : !toggleOpen}" class="text-gray-700 hidden h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg>';
-// 	$out .= '<svg aria-hidden="true" :class="{ \'hidden\' : toggleOpen}" class="text-gray-700 h-4 w-4 fill-current"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg>';
-// 	$out .= '</div>';
-// 	$out .= '</div>';
-// 	$out .= '<div class="bg-white border border-gray-200 border-t-0 rounded-b text-gray-700 px-6 py-6 hidden" :class="{ \'hidden\' : !toggleOpen}">';
-// 	$out .= do_shortcode($content);
-// 	$out .= '</div>';
-// 	$out .= '</div>';
-// 	return $out;
-// }
-
-// add_shortcode('efstoggles', 'mu_efs_tw_toggles');
-// add_shortcode('efstoggle', 'mu_efs_tw_toggle');
 
 
 class Marsha_Toggles
@@ -383,14 +341,14 @@ class Marsha_Toggles
 
 		$html = sprintf(
 			'%s
-			<div class="flex justify-between bg-green text-white items-center cursor-pointer group border border-black" x-on:click="toggleOpen = !toggleOpen">
+			<div class="flex justify-between bg-gray-100 text-gray-800 items-center cursor-pointer group border border-gray-200" x-on:click="toggleOpen = !toggleOpen">
 			<%s class="accordion-title py-4 px-4 text-base font-semibold tracking-wide">%s</%s>
 			<div class="py-4 px-4">
 			<svg aria-hidden="true" :class="{ \'hidden\' : !toggleOpen}" class="text-gray-700 hidden h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg>
 			<svg aria-hidden="true" :class="{ \'hidden\' : toggleOpen}" class="text-gray-700 h-4 w-4 fill-current"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg>
 			</div>
 			</div>
-			<div class="bg-white border border-black border-t-0 rounded-b text-gray-700 px-6 py-6 hidden" :class="{ \'hidden\' : !toggleOpen}">
+			<div class="bg-white border border-gray-200 border-t-0 rounded-b text-gray-700 px-6 py-6 hidden" :class="{ \'hidden\' : !toggleOpen}">
 			%s
 			</div>
 			</div>',
@@ -409,3 +367,64 @@ class Marsha_Toggles
 }
 
 new Marsha_Toggles();
+
+function mu_gallery($atts, $content = null)
+{
+	$data = shortcode_atts(array(
+		'src' => '',
+		'alt' => '',
+		'class' => '',
+		'description' => ''
+	), $atts);
+
+	$output = '<div class="flex flex-wrap lg:-mx-4">';
+	$output .= do_shortcode( $content );
+	$output .= '</div>';
+	return $output;
+}
+add_shortcode( 'mu_gallery', 'mu_gallery');
+
+function mu_gallery_modal($atts, $content = null)
+{
+	$data = shortcode_atts(array(
+		'src' => '',
+		'alt' => '',
+		'class' => '',
+		'description' => '',
+		'per_row' => 3
+	), $atts);
+
+	if ( $data['per_row'] < 3 ) {
+		$data['per_row'] = 3;
+	} elseif ( $data['per_row'] > 5 ) {
+		$data['per_row'] = 5;
+	}
+
+	$output = '<div class="w-full lg:w-1/' . esc_attr( $data['per_row'] ) . ' lg:px-4 my-4">';
+	$output .= '<div x-data="{ imgModal : false, imgModalSrc : \'\', imgModalDesc : \'\' }">';
+	$output .= '<template @img-modal.window="imgModal = true; imgModalSrc = $event.detail.imgModalSrc; imgModalDesc = $event.detail.imgModalDesc;" x-if="imgModal">';
+	$output .= '<div x-transition:enter="transition ease-out duration-100" x-transition:enter-start="opacity-0 transform scale-90" x-transition:enter-end="opacity-100 transform scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="opacity-100 transform scale-100" x-transition:leave-end="opacity-0 transform scale-90" x-on:click.away="imgModalSrc = \'\'" class="p-2 fixed w-full h-100 inset-0 z-50 overflow-hidden flex justify-center items-center bg-black-overlay-20">';
+	$output .= '<div @click.away="imgModal = \'\'" class="flex flex-col max-w-3xl max-h-full overflow-auto">';
+	$output .= '<div class="z-50">';
+	$output .= '<button @click="imgModal = \'\'" class="float-right pt-2 pr-2 outline-none focus:outline-none">';
+	$output .= '<svg class="fill-current text-white " xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">';
+	$output .= '<path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">';
+	$output .= '</path>';
+	$output .= '</svg>';
+	$output .= '</button>';
+	$output .= '</div>';
+	$output .= '<div class="p-2">';
+	$output .= '<img loading="lazy" :alt="imgModalSrc" class="object-contain h-1/2-screen" :src="imgModalSrc">';
+	$output .= '<p x-text="imgModalDesc" class="text-center text-white"></p>';
+	$output .= '</div>';
+	$output .= '</div>';
+	$output .= '</div>';
+	$output .= '</template>';
+	$output .= '</div>';
+	$output .= '<div x-data="{}">';
+	$output .= '<img x-on:click="$dispatch(\'img-modal\', {  imgModalSrc: \'' . esc_url( $data['src'] ) . '\', imgModalDesc: \'' . esc_attr( $data['description'] ) . '\' })" src="' . esc_url( $data['src'] ) . '" alt="' . esc_attr( $data['alt'] ) . '" class="cursor-pointer ' . esc_attr( $data['class'] ) . '" />';
+	$output .= '</div>';
+	$output .= '</div>';
+	return $output;
+}
+add_shortcode( 'mu_gallery_modal', 'mu_gallery_modal');
