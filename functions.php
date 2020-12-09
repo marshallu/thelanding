@@ -341,14 +341,14 @@ class Marsha_Toggles
 
 		$html = sprintf(
 			'%s
-			<div class="flex justify-between bg-gray-100 text-gray-800 items-center cursor-pointer group border border-gray-200" x-on:click="toggleOpen = !toggleOpen">
+			<div class="flex justify-between bg-gray-100 text-gray-800 items-center cursor-pointer group bg-green text-white" x-on:click="toggleOpen = !toggleOpen">
 			<%s class="accordion-title py-4 px-4 text-base font-semibold tracking-wide">%s</%s>
 			<div class="py-4 px-4">
 			<svg aria-hidden="true" :class="{ \'hidden\' : !toggleOpen}" class="text-gray-700 hidden h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg>
 			<svg aria-hidden="true" :class="{ \'hidden\' : toggleOpen}" class="text-gray-700 h-4 w-4 fill-current"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg>
 			</div>
 			</div>
-			<div class="bg-white border border-gray-200 border-t-0 rounded-b text-gray-700 px-6 py-6 hidden" :class="{ \'hidden\' : !toggleOpen}">
+			<div class="bg-white border border-gray-100 border-t-0 rounded-b text-gray-700 px-6 py-6 hidden" :class="{ \'hidden\' : !toggleOpen}">
 			%s
 			</div>
 			</div>',
